@@ -1,13 +1,11 @@
 from requests_html import HTMLSession
-#from bs4 import BeautifulSoup
+
 session = HTMLSession()
-r=session.get("http://python-requests.org/")
-print("0")
-r.html.render(sleep=10)
-print("1")
-r.session.close()
-#h3=response.html.find("h3")
-#print(h3[0].text)
-#print("done")
-#soup = BeautifulSoup(page.content, "html.parser")
-#print(soup.prettify())
+
+r = session.get("https://alpha.art/collection/dape")
+
+r.html.render()
+
+nftd = r.html.find(".grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-8", first = True)
+
+print(nftd.html)
