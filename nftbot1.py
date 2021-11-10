@@ -1,12 +1,17 @@
 from selenium import webdriver
 import time
-from webdriver_manager.chrome import ChromeDriverManager
-browser=webdriver.Chrome(ChromeDriverManager().install())
-browser.get("https://alpha.art/")
-time.sleep(2)
-connectwallet=browser.find_element_by_xpath("//button[contains(., 'Connect Wallet')]")
-time.sleep(1)
+import pyautogui,sys
+from selenium.webdriver.chrome.options import Options
+options1=webdriver.ChromeOptions()
+options1.add_argument(r"--user-data-dir=C:\\Users\\Kasutaja\\AppData\\Local\\Google\\Chrome\\User Data" )
+options1.add_argument(r'--profile-directory=Profile 1')
+driver=webdriver.Chrome(executable_path=r'C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe', options = options1)
+driver.get("https://alpha.art")
+connectwallet=driver.find_element_by_xpath("//button[contains(., 'Connect Wallet')]")
 connectwallet.click()
-time.sleep(1)
-phantom=browser.find_element_by_xpath("//button[contains(., 'Phantom')]")
+phantom=driver.find_element_by_xpath("//button[contains(., 'Phantom')]")
 phantom.click()
+time.sleep(1)
+pyautogui.write("foxinabox")
+pyautogui.moveTo(1706,683)
+pyautogui.click()
