@@ -4,15 +4,21 @@ def rarityscraper(veebileht, fail):
     import time
     import pandas as pd
 
-    driver = webdriver.Chrome(executable_path=r"C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe")
+    option = webdriver.ChromeOptions()
+    chrome_prefs={}
+    option.experimental_options["prefs"]=chrome_prefs
+    chrome_prefs["profile.default_content_settings"]={"images":2}
+    chrome_prefs["profile.managed_default_content_settings"]={"images":2}
+    driver = webdriver.Chrome(executable_path=r"C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe",chrome_options=option)
     loendur=0
+
 
     while True:
 
         try:
             driver.get(veebileht+"?page="+str(loendur)+"&ids=&sort_by=rank")
             print(driver.title)
-            time.sleep(5)
+            time.sleep(0)
             lingid = driver.find_elements_by_class_name('nft-details')
             lingid.pop(0)
             lingid.pop(0)
