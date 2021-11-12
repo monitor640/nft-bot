@@ -1,12 +1,12 @@
-def scraper(veebileht, fail):
+def scraper(fail,driver):
     from parse import search
     from selenium import webdriver
-    import time 
+    import time
     import pandas as pd
 
-    driver = webdriver.Chrome()
+    #driver = webdriver.Chrome(executable_path=r"C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe")
 
-    driver.get(veebileht)
+    #driver.get(veebileht)
     print(driver.title)
     time.sleep(5)
     lingid = driver.find_elements_by_class_name('group ')
