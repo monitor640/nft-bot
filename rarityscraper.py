@@ -9,8 +9,8 @@ def rarityscraper(veebileht, fail):
     option.experimental_options["prefs"]=chrome_prefs
     chrome_prefs["profile.default_content_settings"]={"images":2}
     chrome_prefs["profile.managed_default_content_settings"]={"images":2}
-    #driver = webdriver.Chrome(executable_path=r"C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe",chrome_options=option)
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(executable_path=r"C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe",chrome_options=option)
+    #driver = webdriver.Chrome()
     loendur=0
     nft_list = []
 
@@ -38,4 +38,3 @@ def rarityscraper(veebileht, fail):
     df = pd.DataFrame(nft_list)
 
     df.to_csv(fail)
-rarityscraper("https://howrare.is/degenapes", "data2.csv")
