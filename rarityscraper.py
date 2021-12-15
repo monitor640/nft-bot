@@ -9,7 +9,8 @@ def rarityscraper(veebileht, fail):
     option.experimental_options["prefs"]=chrome_prefs
     chrome_prefs["profile.default_content_settings"]={"images":2}
     chrome_prefs["profile.managed_default_content_settings"]={"images":2}
-    driver = webdriver.Chrome(executable_path=r"C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe",chrome_options=option)
+    #driver = webdriver.Chrome(executable_path=r"C:\Users\Kasutaja\progekodu\chromedriverid\chromedriver.exe",chrome_options=option)
+    driver = webdriver.Chrome()
     loendur=0
     nft_list = []
 
@@ -18,7 +19,7 @@ def rarityscraper(veebileht, fail):
         try:
             driver.get(veebileht+"?page="+str(loendur)+"&ids=&sort_by=rank")
             print(driver.title)
-            time.sleep(0)
+            time.sleep(1)
             lingid = driver.find_elements_by_class_name('item_stats')
 
             for el in lingid:
