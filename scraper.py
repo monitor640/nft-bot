@@ -18,6 +18,7 @@ def scraper(fail,driver):
     for el in lingid:
         nimi = el.find_element_by_xpath('.//div[2]/h3').text
         hind = el.find_element_by_xpath('.//div[2]/div/h3').text
+        nimi = nimi[nimi.find("#"):]
         nft = {
             "nimi":nimi,
             "hind":hind
@@ -26,4 +27,4 @@ def scraper(fail,driver):
     driver.quit()
     df = pd.DataFrame(nft_list)
 
-    df.to_csv(fail)
+    df.to_csv(fail, index= False)
