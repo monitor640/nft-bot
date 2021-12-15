@@ -23,8 +23,8 @@ def rarityscraper(veebileht, fail):
             lingid = driver.find_elements_by_class_name('item_stats')
 
             for el in lingid:
-                nimi = el.find_element_by_xpath('.//div[1]/span').text
-                rank = el.find_element_by_xpath('.//div[2]/span').text
+                rank = el.find_element_by_xpath('.//div[1]/span').text
+                nimi = el.find_element_by_xpath('.//div[2]/span').text
                 nft = {
                 "nimi":nimi,
                 "rank":rank
@@ -37,5 +37,5 @@ def rarityscraper(veebileht, fail):
             break
     df = pd.DataFrame(nft_list)
 
-    df.to_csv(fail)
-rarityscraper("https://howrare.is/degenapes", "data2.csv")
+    df.to_csv(fail, index=False)
+rarityscraper("https://howrare.is/solsocks", "data2.csv")
