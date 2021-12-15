@@ -2,6 +2,8 @@ from selenium import webdriver
 import time
 import pyautogui,sys
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+import numpy as np
 from scraper import scraper
 import PySimpleGUI as sg
 
@@ -27,8 +29,32 @@ connectwallet=driver.find_element_by_xpath("//button[contains(., 'Connect Wallet
 connectwallet.click()
 phantom=driver.find_element_by_xpath("//button[contains(., 'Phantom')]")
 phantom.click()
-time.sleep(1)
+time.sleep(2)
 pyautogui.write("foxinabox")
 pyautogui.moveTo(1706,683)
 pyautogui.click()
+time.sleep(5)
+pyautogui.click()
+time.sleep(1)
+last_height=0
+new_height=0
+while True:
+    # Scroll down to bottom
+    driver.find_element_by_xpath('//body').send_keys(Keys.CONTROL+Keys.END)
+
+    # Wait to load page
+    time.sleep(2)
+
+
+    # Calculate new scroll height and compare with last scroll height
+    new_height = driver.execute_script("return document.body.scrollHeight")
+
+    # break condition
+    if new_height == last_height:
+        break
+    last_height = new_height
 scraper(scrapetudfail,driver)
+#for x in nft_list:
+#    rank=
+#    fairvalue=1266-(81.25*(np.log(575*rank-14100)))
+#https://alpha.art/collection/degods
