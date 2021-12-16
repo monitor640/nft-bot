@@ -1,5 +1,3 @@
 import pyautogui,sys
 while True:
     print(pyautogui.position())
-
-#(1705,688)
